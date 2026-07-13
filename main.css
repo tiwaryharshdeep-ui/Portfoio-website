@@ -1,0 +1,117 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Inter:wght@300;400;500&family=Manrope:wght@400;500;600;700&family=Outfit:wght@500;700&family=Sora:wght@700&display=swap');
+
+:root {
+    /* Colors - AI Theme (Deep Cosmic Purple/Indigo) */
+    --bg-color: #0f0c29;
+    --bg-gradient: linear-gradient(135deg, rgba(15, 12, 41, 0.96), rgba(48, 43, 99, 0.92), rgba(36, 36, 62, 0.96)), url('../assets/images/digital-marketing-bg.jpg');
+    --bg-gradient-light: linear-gradient(135deg, rgba(255, 255, 255, 0.92), rgba(241, 245, 249, 0.97)), url('../assets/images/digital-marketing-bg.jpg');
+    --primary-accent: #00E5FF; /* Cyan */
+    --secondary-accent: #8A2BE2; /* BlueViolet */
+    --accent-color: #10b981; /* Emerald */
+    --highlight-color: #f59e0b; /* Amber */
+    --text-color: #F8FAFC;
+    --text-muted: #b4c6e4;
+    --card-bg: rgba(25, 20, 50, 0.6);
+    --border-color: rgba(255, 255, 255, 0.08);
+    
+    /* Typography */
+    --font-body: 'Inter', sans-serif;
+    --font-heading: 'Outfit', sans-serif;
+    --font-script: 'Dancing Script', cursive;
+    --font-name: 'Sora', sans-serif;
+    --font-tagline: 'Manrope', sans-serif;
+    
+    /* Effects */
+    --glow-primary: 0 0 20px rgba(0, 229, 255, 0.5);
+    --glow-secondary: 0 0 20px rgba(124, 58, 237, 0.5);
+    --transition: all 0.3s ease;
+}
+
+[data-theme="light"] {
+    --bg-color: #f1f5f9;
+    --bg-gradient: linear-gradient(135deg, rgba(255, 255, 255, 0.92), rgba(241, 245, 249, 0.97)), url('../assets/images/digital-marketing-bg.jpg');
+    --primary-accent: #00b4cc; /* Darker Cyan for light mode */
+    --secondary-accent: #6d28d9;
+    --text-color: #0D1117;
+    --text-muted: #475569;
+    --card-bg: rgba(255, 255, 255, 0.85);
+    --border-color: rgba(0, 0, 0, 0.06);
+    --glow-primary: 0 0 20px rgba(0, 180, 204, 0.2);
+    --glow-secondary: 0 0 20px rgba(109, 40, 217, 0.2);
+}
+
+/* Custom Thin Scrollbar */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+::-webkit-scrollbar-track {
+    background: var(--bg-color);
+}
+::-webkit-scrollbar-thumb {
+    background: var(--secondary-accent);
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-accent);
+}
+
+/* Remove Text Glow & Gradient in Light Mode for readability */
+[data-theme="light"] .hero-name,
+[data-theme="light"] .hero-tagline,
+[data-theme="light"] .sidebar-name,
+[data-theme="light"] .sidebar-title {
+    filter: none !important;
+    background: none !important;
+    -webkit-text-fill-color: var(--text-color) !important;
+    color: var(--text-color) !important;
+}
+
+/* Base Reset */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--bg-color);
+    background-image: var(--bg-gradient);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: var(--text-color);
+    font-family: var(--font-body);
+    line-height: 1.6;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    line-height: 1.2;
+    margin-bottom: 1rem;
+}
+
+a {
+    color: var(--secondary-accent);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+a:hover {
+    color: var(--primary-accent);
+}
+
+ul {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
