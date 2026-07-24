@@ -6,7 +6,7 @@
     --bg-gradient: linear-gradient(135deg, rgba(15, 12, 41, 0.96), rgba(48, 43, 99, 0.92), rgba(36, 36, 62, 0.96)), url('../assets/images/digital-marketing-bg.jpg');
     --bg-gradient-light: linear-gradient(135deg, rgba(255, 255, 255, 0.92), rgba(241, 245, 249, 0.97)), url('../assets/images/digital-marketing-bg.jpg');
     --primary-accent: #00E5FF; /* Cyan */
-    --secondary-accent: #8A2BE2; /* BlueViolet */
+    --secondary-accent: #38BDF8; /* Sky Blue */
     --accent-color: #10b981; /* Emerald */
     --highlight-color: #f59e0b; /* Amber */
     --text-color: #F8FAFC;
@@ -23,7 +23,7 @@
     
     /* Effects */
     --glow-primary: 0 0 20px rgba(0, 229, 255, 0.5);
-    --glow-secondary: 0 0 20px rgba(124, 58, 237, 0.5);
+    --glow-secondary: 0 0 20px rgba(56, 189, 248, 0.5);
     --transition: all 0.3s ease;
 }
 
@@ -31,13 +31,13 @@
     --bg-color: #f1f5f9;
     --bg-gradient: linear-gradient(135deg, rgba(255, 255, 255, 0.92), rgba(241, 245, 249, 0.97)), url('../assets/images/digital-marketing-bg.jpg');
     --primary-accent: #00b4cc; /* Darker Cyan for light mode */
-    --secondary-accent: #6d28d9;
+    --secondary-accent: #0284C7; /* Deep Sky Blue for light mode */
     --text-color: #0D1117;
     --text-muted: #475569;
     --card-bg: rgba(255, 255, 255, 0.85);
     --border-color: rgba(0, 0, 0, 0.06);
     --glow-primary: 0 0 20px rgba(0, 180, 204, 0.2);
-    --glow-secondary: 0 0 20px rgba(109, 40, 217, 0.2);
+    --glow-secondary: 0 0 20px rgba(2, 132, 199, 0.2);
 }
 
 /* Custom Thin Scrollbar */
@@ -65,6 +65,23 @@
     background: none !important;
     -webkit-text-fill-color: var(--text-color) !important;
     color: var(--text-color) !important;
+}
+
+/* Light Mode Project Text in Black */
+[data-theme="light"] .project-card .project-title,
+[data-theme="light"] .project-title {
+    color: #000000 !important;
+    -webkit-text-fill-color: #000000 !important;
+    background: none !important;
+    filter: none !important;
+}
+
+[data-theme="light"] .project-card .project-tech {
+    color: #1e293b !important;
+}
+
+[data-theme="light"] .project-card p {
+    color: #1e293b !important;
 }
 
 /* Base Reset */

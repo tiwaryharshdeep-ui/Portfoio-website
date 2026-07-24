@@ -68,23 +68,29 @@ section {
     display: flex;
     align-items: center;
     padding-top: 80px;
+    padding-bottom: 40px;
 }
 
 .hero-container {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: space-between;
-    gap: 4rem;
+    text-align: center;
+    justify-content: center;
+    gap: 2rem;
 }
 
 .hero-content {
-    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
 }
 
 .hero-name {
-    font-size: 5rem;
+    font-size: 3rem;
     font-weight: 700;
-    margin-bottom: 1rem;
+    margin-bottom: 0.8rem;
     font-family: var(--font-name);
     background: linear-gradient(to bottom, #ffffff 0%, #cccccc 30%, #999999 50%, #ffffff 51%, #e6e6e6 100%);
     -webkit-background-clip: text;
@@ -94,8 +100,8 @@ section {
 }
 
 .hero-tagline {
-    font-size: 2rem;
-    margin-bottom: 2.5rem;
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
     max-width: 600px;
     font-family: var(--font-tagline);
     background: linear-gradient(to bottom, #e0f7fa 0%, #80deea 100%);
@@ -106,14 +112,16 @@ section {
 
 .hero-cta {
     display: flex;
-    gap: 1.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1.2rem;
 }
 
 .hero-image-wrapper {
-    flex: 1;
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-bottom: 0.5rem;
 }
 
 .profile-placeholder {
@@ -128,8 +136,9 @@ section {
 }
 
 .btn {
-    padding: 1rem 2.5rem;
+    padding: 0.75rem 2rem;
     border-radius: 30px;
+    font-size: 0.9rem;
     font-weight: 500;
     cursor: pointer;
     text-align: center;
@@ -182,13 +191,13 @@ section {
 
 @media (max-width: 768px) {
     .hero-container {
-        flex-direction: column-reverse;
+        flex-direction: column;
         text-align: center;
-        padding-top: 4rem;
+        padding-top: 2rem;
     }
     
-    .hero-name { font-size: 3rem; }
-    .hero-tagline { font-size: 1.2rem; margin: 0 auto 2rem; }
+    .hero-name { font-size: 2.2rem; }
+    .hero-tagline { font-size: 1.1rem; margin: 0 auto 1.5rem; }
     .hero-cta { justify-content: center; }
 }
 
@@ -935,4 +944,205 @@ body {
 }
 [data-theme="light"] .bg-blob {
     opacity: 0.1;
+}
+
+/* ==========================================================================
+   Responsive Design System (Mobile, Tablet, Desktop)
+   ========================================================================== */
+
+/* Tablet Breakpoints (max-width: 992px) */
+@media (max-width: 992px) {
+    .container {
+        padding: 0 1.5rem;
+    }
+
+    .main-content {
+        margin-left: 0;
+        width: 100%;
+        padding-top: 70px;
+    }
+
+    .sidebar {
+        width: 260px;
+        transform: translateX(-100%);
+        transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+        z-index: 10000;
+        box-shadow: none;
+    }
+
+    .sidebar.active {
+        transform: translateX(0);
+        box-shadow: 10px 0 30px rgba(0, 0, 0, 0.7);
+    }
+
+    .mobile-menu-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: fixed;
+        top: 1rem;
+        right: 1rem;
+        width: 44px;
+        height: 44px;
+        border-radius: 12px;
+        background: var(--card-bg);
+        border: 1px solid var(--border-color);
+        color: var(--primary-accent);
+        font-size: 1.4rem;
+        z-index: 10001;
+        cursor: pointer;
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        transition: all 0.3s ease;
+    }
+
+    .grid-3 {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+
+    .grid-2 {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .about-grid {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+    }
+
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 1.5rem !important;
+    }
+
+    .skills-grid {
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 1.2rem !important;
+    }
+}
+
+/* Mobile Breakpoints (max-width: 768px) */
+@media (max-width: 768px) {
+    .container {
+        padding: 0 1rem;
+    }
+
+    .section-title {
+        font-size: 1.75rem;
+    }
+
+    /* Hero Section Mobile Adjustments */
+    .hero-section {
+        min-height: auto;
+        padding-top: 50px;
+        padding-bottom: 40px;
+    }
+
+    .hero-container {
+        gap: 1.5rem;
+    }
+
+    .hero-name {
+        font-size: 2.1rem;
+    }
+
+    .hero-tagline {
+        font-size: 1.05rem;
+        margin-bottom: 1.2rem;
+    }
+
+    .hero-description {
+        font-size: 0.9rem;
+        margin-bottom: 1.5rem;
+        padding: 0 0.5rem;
+    }
+
+    .circular-profile-card {
+        width: 170px;
+        height: 170px;
+    }
+
+    .card-badge {
+        width: 36px;
+        height: 36px;
+    }
+
+    .card-badge img {
+        width: 20px;
+        height: 20px;
+    }
+
+    .card-badge svg {
+        width: 18px;
+        height: 18px;
+    }
+
+    .badge-1 { top: -12%; left: 38%; }
+    .badge-2 { top: 6%; right: -12%; }
+    .badge-3 { top: 44%; right: -18%; }
+    .badge-4 { bottom: 6%; right: -12%; }
+    .badge-5 { bottom: -12%; left: 38%; }
+    .badge-6 { bottom: 6%; left: -12%; }
+    .badge-7 { top: 44%; left: -18%; }
+
+    .hero-cta {
+        flex-direction: column;
+        width: 100%;
+        max-width: 280px;
+        gap: 0.8rem;
+    }
+
+    .btn {
+        width: 100%;
+        padding: 0.7rem 1.2rem;
+        font-size: 0.85rem;
+    }
+
+    /* Grid Layouts on Mobile */
+    .grid-3, .services-grid, .skills-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 1rem !important;
+    }
+
+    .card {
+        padding: 1.4rem 1rem;
+    }
+
+    /* Contact Section Mobile Overflow Fix */
+    .main-content[style*="height: 100vh"] {
+        height: auto !important;
+        min-height: 100vh;
+        overflow: visible !important;
+    }
+
+    .floating-wa {
+        bottom: 1.2rem;
+        right: 1.2rem;
+        width: 50px;
+        height: 50px;
+    }
+
+    #back-to-top {
+        bottom: 1.2rem;
+        left: 1.2rem;
+        width: 44px;
+        height: 44px;
+    }
+}
+
+/* Small Mobile Breakpoints (max-width: 480px) */
+@media (max-width: 480px) {
+    .grid-3, .services-grid, .skills-grid {
+        grid-template-columns: 1fr !important;
+    }
+
+    .hero-name {
+        font-size: 1.8rem;
+    }
+
+    .circular-profile-card {
+        width: 150px;
+        height: 150px;
+    }
 }

@@ -46,11 +46,14 @@ document.addEventListener("DOMContentLoaded", () => {
         if (allSkills.length > 0 && skillsContainer) {
             skillsContainer.innerHTML = '';
             allSkills.forEach(skill => {
+                const logoHtml = skill.logo ? `<img src="${skill.logo}" alt="${escapeHTML(skill.name)}" style="width: 48px; height: 48px; object-fit: contain;">` : '<span style="font-size: 2.5rem;">⚡</span>';
                 skillsContainer.innerHTML += `
-                    <div class="card card-glow" style="${skill.isPrivate ? 'border-color: var(--primary-accent); position: relative;' : 'position: relative;'}">
+                    <div class="card card-glow" style="text-align: center; padding: 2rem 1.5rem; ${skill.isPrivate ? 'border-color: var(--primary-accent); position: relative;' : 'position: relative;'}">
                         ${skill.isPrivate ? '<div style="position:absolute; top: -10px; right: 10px; background: linear-gradient(45deg, var(--primary-accent), var(--secondary-accent)); padding: 4px 10px; border-radius: 12px; font-size: 0.7rem; font-weight: bold; color: white;">Private</div>' : ''}
-                        <h3>${escapeHTML(skill.name)}</h3>
-                        <p style="color: var(--text-muted)">${escapeHTML(skill.category)}</p>
+                        <div style="margin-bottom: 1rem; display: flex; justify-content: center; align-items: center; min-height: 50px;">
+                            ${logoHtml}
+                        </div>
+                        <h3 style="font-size: 1.15rem; color: var(--text-color); margin: 0;">${escapeHTML(skill.name)}</h3>
                         ${skill.isPrivate ? `<button class="delete-skill-btn" data-name="${escapeHTML(skill.name)}" style="display:inline-block; margin-top:1rem; background: transparent; border: 1px solid #ff4444; color: #ff4444; padding: 0.3rem 0.8rem; border-radius: 15px; cursor: pointer; font-size: 0.8rem;">Delete</button>` : ''}
                     </div>
                 `;
@@ -93,22 +96,21 @@ document.addEventListener("DOMContentLoaded", () => {
         if (allProjects.length > 0 && projectsContainer) {
             projectsContainer.innerHTML = '';
             allProjects.forEach(project => {
-                const techString = Array.isArray(project.technologies) ? project.technologies.join(', ') : project.technologies;
+                const techString = Array.isArray(project.technologies) ? project.technologies.join(' • ') : project.technologies;
+                const pdfLink = project.pdfUrl || project.link || '#';
                 projectsContainer.innerHTML += `
-                    <div class="card card-glow project-card" style="${project.isPrivate ? 'border-color: var(--primary-accent); position: relative;' : 'position: relative;'}">
+                    <div class="card card-glow project-card" style="padding: 2rem; ${project.isPrivate ? 'border-color: var(--primary-accent); position: relative;' : 'position: relative;'}">
                         ${project.isPrivate ? '<div style="position:absolute; top: -10px; right: 10px; background: linear-gradient(45deg, var(--primary-accent), var(--secondary-accent)); padding: 4px 10px; border-radius: 12px; font-size: 0.7rem; font-weight: bold; color: white;">Private</div>' : ''}
-                        ${project.images && project.images.length > 0 ? `
-                            <div class="project-gallery" style="display: flex; gap: 0.5rem; overflow-x: auto; margin-bottom: 1rem; padding-bottom: 0.5rem;">
-                                ${project.images.map(img => `<a href="${img}" target="_blank"><img src="${img}" style="flex: 0 0 auto; width: 200px; height: 120px; object-fit: cover; border-radius: 6px; border: 1px solid var(--border-color); transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'"></a>`).join('')}
-                            </div>
-                        ` : (project.image ? `<img src="${project.image}" alt="${escapeHTML(project.title)}" style="width: 100%; border-radius: 8px; margin-bottom: 1rem; object-fit: cover;">` : '<div class="project-img"></div>')}
-                        <h3 class="project-title">${escapeHTML(project.title)}</h3>
-                        <p class="project-tech">${escapeHTML(techString)}</p>
-                        <p>${escapeHTML(project.description)}</p>
-                        ${project.link && project.link !== '#' ? `<a href="${escapeHTML(project.link)}" target="_blank" rel="noopener noreferrer" style="display:inline-block; margin-top:1rem;" class="btn btn-secondary">View Project</a>` : ''}
+                        <h3 class="project-title" style="font-size: 1.4rem; color: var(--primary-accent); margin-bottom: 0.5rem;">${escapeHTML(project.title)}</h3>
+                        <p class="project-tech" style="font-size: 0.9rem; color: var(--secondary-accent); font-weight: 500; margin-bottom: 0.8rem;">${escapeHTML(techString)}</p>
+                        <p style="font-size: 0.95rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 1.2rem;">${escapeHTML(project.description)}</p>
+                        <a href="${escapeHTML(pdfLink)}" target="_blank" rel="noopener noreferrer" style="display:inline-flex; align-items:center; gap: 0.5rem; margin-top:0.5rem;" class="btn btn-primary glow-effect">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                            View Project PDF
+                        </a>
                         ${(localStorage.getItem('isAdmin') === 'true') ? `
-                            <button class="edit-private-btn" data-title="${escapeHTML(project.title)}" style="display:inline-block; margin-top:1rem; margin-left: 0.5rem; background: transparent; border: 1px solid var(--primary-accent); color: var(--primary-accent); padding: 1rem 1.5rem; border-radius: 30px; font-weight: 500; cursor: pointer; text-transform: uppercase; font-size: 0.9rem;">Edit</button>
-                            <button class="delete-private-btn" data-title="${escapeHTML(project.title)}" style="display:inline-block; margin-top:1rem; margin-left: 0.5rem; background: transparent; border: 1px solid #ff4444; color: #ff4444; padding: 1rem 1.5rem; border-radius: 30px; font-weight: 500; cursor: pointer; text-transform: uppercase; font-size: 0.9rem;">Delete</button>
+                            <button class="edit-private-btn" data-title="${escapeHTML(project.title)}" style="display:inline-block; margin-top:0.5rem; margin-left: 0.5rem; background: transparent; border: 1px solid var(--primary-accent); color: var(--primary-accent); padding: 0.5rem 1rem; border-radius: 20px; font-weight: 500; cursor: pointer; text-transform: uppercase; font-size: 0.8rem;">Edit</button>
+                            <button class="delete-private-btn" data-title="${escapeHTML(project.title)}" style="display:inline-block; margin-top:0.5rem; margin-left: 0.5rem; background: transparent; border: 1px solid #ff4444; color: #ff4444; padding: 0.5rem 1rem; border-radius: 20px; font-weight: 500; cursor: pointer; text-transform: uppercase; font-size: 0.8rem;">Delete</button>
                         ` : ''}
                     </div>
                 `;
@@ -243,13 +245,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const setDarkIcon = () => { 
         if(themeToggleBtn) {
-            themeToggleBtn.innerHTML = `<span style="display:flex; align-items:center; gap:0.5rem; transform: rotate(180deg); transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);">${themeIconSVG} <span style="font-size: 1.05rem;">Dark Theme</span></span>`; 
+            themeToggleBtn.innerHTML = `<span style="display:inline-flex; align-items:center; gap:0.5rem;"><span style="font-size:1.1rem;">🌙</span> <span style="font-size: 0.95rem; font-weight: 600;">Dark Theme</span></span>`; 
         }
     };
     
     const setLightIcon = () => { 
         if(themeToggleBtn) {
-            themeToggleBtn.innerHTML = `<span style="display:flex; align-items:center; gap:0.5rem; transform: rotate(0deg); transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);">${themeIconSVG} <span style="font-size: 1.05rem;">Light Theme</span></span>`; 
+            themeToggleBtn.innerHTML = `<span style="display:inline-flex; align-items:center; gap:0.5rem;"><span style="font-size:1.1rem;">☀️</span> <span style="font-size: 0.95rem; font-weight: 600;">Light Theme</span></span>`; 
         }
     };
 
@@ -804,12 +806,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // 7. Floating WhatsApp Widget
     const waWidget = document.createElement('a');
-    waWidget.href = "https://wa.me/YOUR_PHONE_NUMBER_HERE"; // User can change this later
+    waWidget.href = "https://wa.me/919005454362?text=Hi%20Harshdeep,%20I%20visited%20your%20portfolio%20and%20would%20like%20to%20connect!";
+    waWidget.target = "_blank";
+    waWidget.rel = "noopener noreferrer";
     waWidget.className = 'floating-wa float-anim';
     waWidget.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" viewBox="0 0 16 16">
       <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/>
     </svg>`;
-    waWidget.target = "_blank";
     waWidget.setAttribute('aria-label', 'Chat on WhatsApp');
     document.body.appendChild(waWidget);
 

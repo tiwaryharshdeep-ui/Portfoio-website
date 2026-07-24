@@ -1,23 +1,24 @@
 const portfolioData = {
     skills: [
-        { name: "HTML5", category: "Frontend" },
-        { name: "CSS3", category: "Frontend" },
-        { name: "JavaScript", category: "Frontend" },
-        { name: "SpecKit", category: "Design & Planning" },
-        { name: "Graphic Design", category: "Design & Planning" },
-        { name: "Web Development", category: "Core Expertise" },
-        { name: "Workflow Automation", category: "Core Expertise" },
-        { name: "Digital Marketing", category: "Marketing" },
-        { name: "Social Media Marketing", category: "Marketing" },
-        { name: "Generative AI", category: "AI & Innovation" },
-        { name: "Prompt Engineering", category: "AI & Innovation" }
+        { name: "HTML5", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" },
+        { name: "CSS3", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" },
+        { name: "JavaScript", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" },
+        { name: "SpecKit", logo: "https://cdn.simpleicons.org/blueprint/00F0FF" },
+        { name: "Graphic Design", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" },
+        { name: "Web Development", logo: "https://cdn.simpleicons.org/codefactor/00F0FF" },
+        { name: "Workflow Automation", logo: "https://cdn.simpleicons.org/n8n/EA4B71" },
+        { name: "Digital Marketing", logo: "https://cdn.simpleicons.org/googleads/4285F4" },
+        { name: "Social Media Marketing", logo: "https://cdn.simpleicons.org/meta/0468FF" },
+        { name: "Generative AI", logo: "https://api.iconify.design/logos:openai-icon.svg" },
+        { name: "Prompt Engineering", logo: "https://api.iconify.design/simple-icons:anthropic.svg" }
     ],
     projects: [
         {
             title: "Personal Portfolio website",
-            description: "Designed and developed a fully responsive personal portfolio website to showcase my skills, projects, certifications, and achievements. The website provides a clean user experience, modern UI, and easy navigation while reflecting my expertise in Web Development, Digital Marketing, and Generative AI. It was made with the help of SpecKit for project planning and structure, then customized it with HTML, CSS, and JavaScript to create a professional and interactive user experience.",
-            technologies: ["Design & Planning: SpecKit", "Frontend: HTML5", "Styling: CSS3", "JavaScript"],
-            link: "#",
+            description: "A modern, fully responsive personal portfolio website showcasing web development, digital marketing, and GenAI projects built with HTML, CSS, JavaScript, and SpecKit.",
+            technologies: ["SpecKit", "HTML5", "CSS3", "JavaScript"],
+            link: "pdf/Personal_Portfolio_Website.pdf",
+            pdfUrl: "pdf/Personal_Portfolio_Website.pdf",
             images: [
                 "https://i.ibb.co/s9yv26TC/Homepage.png",
                 "https://i.ibb.co/pjjDfWm6/About.png",
@@ -28,9 +29,10 @@ const portfolioData = {
         },
         {
             title: "AI-Driven Marketing & Content Automation",
-            description: "An end-to-end automation workflow that harnesses the power of Generative AI and Prompt Engineering to produce highly engaging, trending content daily. It seamlessly crafts platform-optimized captions for LinkedIn, Instagram, and X (Twitter), paired with visually stunning infographics and poster designs. By automatically organizing all assets into structured folders, this tool delivers publish-ready content, drastically reducing manual overhead and saving countless hours for marketers and creators.",
+            description: "An end-to-end automated workflow leveraging Generative AI and Prompt Engineering to produce platform-optimized social media content and visual assets daily.",
             technologies: ["Generative AI", "Prompt Engineering", "Workflow Automation", "Social Media Marketing"],
-            link: "#",
+            link: "pdf/AI_Driven_Marketing_Automation.pdf",
+            pdfUrl: "pdf/AI_Driven_Marketing_Automation.pdf",
             images: [
                 "https://i.ibb.co/rGPb3VQR/folder-image-2.png",
                 "https://i.ibb.co/PsJjj1Nn/infographic-image.png",

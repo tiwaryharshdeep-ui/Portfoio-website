@@ -52,8 +52,8 @@ body::after {
 /* Circular Profile Card */
 .circular-profile-card {
     position: relative;
-    width: 350px;
-    height: 350px;
+    width: 200px;
+    height: 200px;
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -64,19 +64,19 @@ body::after {
 .circular-profile-card::before {
     content: '';
     position: absolute;
-    inset: -10px;
+    inset: -6px;
     border-radius: 50%;
     background: conic-gradient(from 0deg, var(--primary-accent), var(--secondary-accent), var(--primary-accent));
     animation: spin-border 4s linear infinite;
     z-index: -2;
-    filter: blur(10px);
+    filter: blur(8px);
     opacity: 0.8;
     transition: opacity 0.3s ease;
 }
 
 .circular-profile-card:hover::before {
     opacity: 1;
-    filter: blur(15px);
+    filter: blur(12px);
 }
 
 .circular-profile-card::after {
@@ -93,7 +93,7 @@ body::after {
     height: 100%;
     border-radius: 50%;
     overflow: hidden;
-    padding: 10px;
+    padding: 6px;
     background: rgba(255, 255, 255, 0.05);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
@@ -120,8 +120,8 @@ body::after {
 /* Floating Badges */
 .card-badge {
     position: absolute;
-    width: 60px;
-    height: 60px;
+    width: 42px;
+    height: 42px;
     background: var(--card-bg);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
@@ -130,7 +130,7 @@ body::after {
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.2);
     z-index: 2;
     transition: transform 0.3s ease;
 }
@@ -140,17 +140,22 @@ body::after {
 }
 
 .card-badge img {
-    width: 35px;
-    height: 35px;
+    width: 24px;
+    height: 24px;
 }
 
-.badge-1 { top: -5%; left: 45%; animation: float-badge 4s ease-in-out infinite; }
-.badge-2 { top: 10%; right: -5%; animation: float-badge 5s ease-in-out infinite 1s; }
-.badge-3 { top: 45%; right: -15%; animation: float-badge 4.5s ease-in-out infinite 0.5s; }
-.badge-4 { bottom: 10%; right: -5%; animation: float-badge 4.2s ease-in-out infinite 1.5s; }
-.badge-5 { bottom: -5%; left: 45%; animation: float-badge 4.8s ease-in-out infinite 0.8s; }
-.badge-6 { bottom: 10%; left: -5%; animation: float-badge 5.1s ease-in-out infinite 1.2s; }
-.badge-7 { top: 45%; left: -15%; animation: float-badge 4.6s ease-in-out infinite 0.3s; }
+.card-badge svg {
+    width: 22px;
+    height: 22px;
+}
+
+.badge-1 { top: -10%; left: 40%; animation: float-badge 4s ease-in-out infinite; }
+.badge-2 { top: 8%; right: -10%; animation: float-badge 5s ease-in-out infinite 1s; }
+.badge-3 { top: 44%; right: -16%; animation: float-badge 4.5s ease-in-out infinite 0.5s; }
+.badge-4 { bottom: 8%; right: -10%; animation: float-badge 4.2s ease-in-out infinite 1.5s; }
+.badge-5 { bottom: -10%; left: 40%; animation: float-badge 4.8s ease-in-out infinite 0.8s; }
+.badge-6 { bottom: 8%; left: -10%; animation: float-badge 5.1s ease-in-out infinite 1.2s; }
+.badge-7 { top: 44%; left: -16%; animation: float-badge 4.6s ease-in-out infinite 0.3s; }
 
 @keyframes float-badge {
     0%, 100% { transform: translateY(0); }
